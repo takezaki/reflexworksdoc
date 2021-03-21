@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Flash高品質印刷ライブラリのサンプルアプリケーション。
+	
+	MXMLで作成された印刷フォーマット（TestForm.mxml）を使用し、画面へのプレビュー表示と印刷を行います。
+	印刷制御を行う「print_lib.*」ネームスペースをバインドしてください。
+-->
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:mx="library://ns.adobe.com/flex/mx"
+				xmlns:pr="print_lib.*"
+			   fontFamily="ＭＳ ゴシック"
+			   initialize="init()"
+			   >
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import flash.geom.Rectangle;
+			import print_lib.PrintManager;
+			import print_lib.PrinterError;
+			import mx.controls.Alert;
+			import flash.events.Event;
+			
+			/**
+			 * ライブラリの印刷制御クラス.
+			 */
+			private var mgr:PrintManager;
+			
+			/**
+			 * 印刷フォーマットにバインドするデータコレクション（住所録）クラス.
+			 */
+			private	var entityArray:AddressBook = new AddressBook();
+			
+			/**
+			 * プレビュー用の印刷フォーマット.
+			 * 
+			 * 印刷用とは、ページ制御などを異なる制御を行いたいので別定義。（データコレクションは共有される）
+			 */
+			private var previewObj:TestForm = new TestForm();
+
+			/**
+			 * 印刷用の印刷フォーマット.
+			 * 
+			 * プレビュー用とは、ページ制御などを異なる制御を行いたいので別定義。（データコレクションは共有される）
+			 */
+			private var printObj:TestForm = new TestForm();
+
+			/**
+			 * バインド用ページ番号.
+			 */
+			[Bindable]
+			private var pageNo:int = 0;
+
+			/**
+			 * バインド用ページ数.
+			 */
+			[Bindable]
+			private var pageCount:int = 0;
+			
+			/**
+			 * バインド用拡大率.
+			 */
+			[Bindable]
+			private var zoomPercent:int = 100;
+			
+			/**
+			 * 初期化処理.
+			 */
+			public function init():void
+			{
+				//印刷制御クラスの生成。
+				mgr = new PrintManager(this);
+				
+				//印刷フォーマットへのデータバインディング
+				previewObj.setEntity(entityArray.getArray());
+				printObj.setEntity(entityArray.getArray());
+				pageCount = printObj.getPageCount();
+				pageNo = printObj.getCurrentPage();
+			}
+			
+			/**
+			 * 現在のページを印刷処理（グリッドなし）.
+			 */
+			public function doPrint():void
+			{
+				//印刷制御クラスにイベントリスナーの登録。（必須ではない）
+				mgr.addEventListener(PrintManager.EVENT_PRINTER_OPENED,callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_PRINTER_CANCEL,callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_PAGEPRINT_END,callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_ALLPRINT_END, callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_PRINTER_EXCEPT, callbackPrint);
+
+				//印刷実施。（印刷位置補正、1ページのみ、グリッド非表示）
+				mgr.doPrint(printObj,20,20,pageNo,pageNo,false);
+			}
+			
+			/**
+			 * 現在のページを印刷処理（グリッド付き）.
+			 * 
+			 * @see doPrint():void
+			 */
+			public function doPrintGrid():void
+			{
+				mgr.addEventListener(PrintManager.EVENT_PRINTER_OPENED,callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_PRINTER_CANCEL,callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_PAGEPRINT_END,callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_ALLPRINT_END, callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_PRINTER_EXCEPT, callbackPrint);
+
+				//印刷実施。（印刷位置補正、1ページのみ、グリッド表示）
+				mgr.doPrint(printObj,20,20,pageNo,pageNo,true);
+			}
+
+			/**
+			 * 指定ページを印刷処理（グリッドなし）.
+			 * 
+			 * @see doPrint():void
+			 */
+			public function doPrintPart():void
+			{
+				mgr.addEventListener(PrintManager.EVENT_PRINTER_OPENED,callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_PRINTER_CANCEL,callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_PAGEPRINT_END,callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_ALLPRINT_END, callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_PRINTER_EXCEPT, callbackPrint);
+
+				//印刷実施。（印刷位置補正、全ページ、グリッド非表示）
+				mgr.doPrint(printObj,20,20,parseInt(prtPartStart.text),parseInt(prtPartEnd.text),false);
+			}
+			
+			/**
+			 * 指定ページを印刷処理（グリッド付き）.
+			 * 
+			 * @see doPrint():void
+			 */
+			public function doPrintPartGrid():void
+			{
+				mgr.addEventListener(PrintManager.EVENT_PRINTER_OPENED,callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_PRINTER_CANCEL,callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_PAGEPRINT_END,callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_ALLPRINT_END, callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_PRINTER_EXCEPT, callbackPrint);
+
+				//印刷実施。（印刷位置補正、全ページ、グリッド表示）
+				mgr.doPrint(printObj,20,20,parseInt(prtPartStart.text),parseInt(prtPartEnd.text),true);
+			}
+
+			/**
+			 * 全ページを印刷処理（グリッドなし）.
+			 * 
+			 * @see doPrint():void
+			 */
+			public function doPrintAll():void
+			{
+				mgr.addEventListener(PrintManager.EVENT_PRINTER_OPENED,callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_PRINTER_CANCEL,callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_PAGEPRINT_END,callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_ALLPRINT_END, callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_PRINTER_EXCEPT, callbackPrint);
+
+				//印刷実施。（印刷位置補正、全ページ、グリッド非表示）
+				mgr.doPrint(printObj,20,20,0,0,false);
+			}
+			
+			/**
+			 * 全ページを印刷処理（グリッド付き）.
+			 * 
+			 * @see doPrint():void
+			 */
+			public function doPrintAllGrid():void
+			{
+				mgr.addEventListener(PrintManager.EVENT_PRINTER_OPENED,callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_PRINTER_CANCEL,callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_PAGEPRINT_END,callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_ALLPRINT_END, callbackPrint);
+				mgr.addEventListener(PrintManager.EVENT_PRINTER_EXCEPT, callbackPrint);
+
+				//印刷実施。（印刷位置補正、全ページ、グリッド表示）
+				mgr.doPrint(printObj,20,20,0,0,true);
+			}
+
+			/**
+			 * 印刷制御クラス登録したイベントリスナー.
+			 * 
+			 *  「プリンタ選択完了イベント」および「ページ印刷完了イベント」では、後続処理をキャンセル可能です。
+			 * キャンセルするには、引数のイベントオブジェクトに対して「preventDefault」メソッドを呼び出してください。
+			 * @param	event	イベント。
+			 */
+			private function callbackPrint(event:Event):void
+			{
+				switch(event.type) {
+					//プリンタ選択完了イベント
+					case PrintManager.EVENT_PRINTER_OPENED:
+						trace("paperWidth:" + mgr.getPaperWidth());
+						trace("paperHeight:" + mgr.getPaperHeight());
+						trace("pageWidth:" + mgr.getPageWidth());
+						trace("pageHeight:" + mgr.getPageHeight());
+						trace("orientation:" + mgr.getPaperOrientation());
+						if ((mgr.getPaperWidth() != PrintManager.PAPER_A4_PCDPI_WIDTH)
+							|| (mgr.getPaperHeight() != PrintManager.PAPER_A4_PCDPI_HEIGHT))
+						{
+							event.preventDefault();	//後続処理をキャンセルします。
+							callLater(function():void { Alert.show("指定されたプリンタの用紙サイズがA4ではありません。"); } );
+						}
+						
+						// ページサイズと印刷可能範囲から印刷オフセットを補正
+						mgr.setOffset(20-(mgr.getPaperWidth()- mgr.getPageWidth()),20-(mgr.getPaperHeight()- mgr.getPageHeight()));
+						break;
+						
+					//プリンタ選択取り消しイベント
+					case PrintManager.EVENT_PRINTER_CANCEL:
+						callLater(function():void { Alert.show("プリンタの選択画面がキャンセルされました。"); } );
+						break;
+						
+					//ページ印刷完了イベント
+					case PrintManager.EVENT_PAGEPRINT_END:
+							this.printStatus.text = "現在："+mgr.getPrintingPage().toString()+" ページ目印刷中。";
+							//event.preventDefault();	//後続処理をキャンセルします。
+						break;
+						
+					//全ページ印刷完了イベント
+					case PrintManager.EVENT_ALLPRINT_END:
+							this.printStatus.text = "印刷を完了しました。";
+						break;
+
+					//プリンタからのエラー通知イベント
+					case PrintManager.EVENT_PRINTER_EXCEPT:
+						callLater(function():void { Alert.show("プリンタからエラーまたはキャンセルが通知されました。プリンタの管理画面を確認してください。:"+mgr.getLastError().message ); } );
+						break;
+						
+					default:
+						break;
+				}
+			}
+
+			/**
+			 * グリッドのみ印刷処理.
+			 * 
+			 * デザイン時に利用を想定。
+			 */
+			public function doPrintOnlyGrid():void
+			{
+				mgr.doGridPrint();
+			}
+			
+			/**
+			 * プレビューのページ制御（戻る）.
+			 */
+			public function doPrev():void
+			{
+				pageNo = previewObj.doPrev();
+			}
+			
+			/**
+			 * プレビューのページ制御（進む）.
+			 */
+			public function doNext():void
+			{
+				pageNo = previewObj.doNext();
+			}
+			
+			/**
+			 * プレビューのページ制御（先頭ページ）.
+			 */
+			public function doTop():void
+			{
+				pageNo = previewObj.doTop();
+			}
+
+			/**
+			 * プレビューのページ制御（最終頁）.
+			 */
+			public function doLast():void
+			{
+				pageNo = previewObj.doLast();
+			}
+
+			/**
+			 * プレビューの表示（グリッドなし）.
+			 */
+			public function doPreview():void
+			{
+				prevErea.doPreview(previewObj);
+			}
+			
+			/**
+			 *  プレビューの表示（グリッド付き）.
+			 */
+			public function doPreviewGrid():void
+			{
+				prevErea.doPreview(previewObj,true);
+			}
+
+			/**
+			 *  プレビューの1/2倍縮小.
+			 */
+			public function zoomOut():void
+			{
+				zoomPercent = prevErea.zoomOutPreview();
+			}
+			
+			/**
+			 *  プレビューの2倍拡大.
+			 */
+			public function zoomIn():void
+			{
+				zoomPercent = prevErea.zoomInPreview();
+			}
+
+			/**
+			 *  プレビューの100%表示(拡大/縮小無し).
+			 */
+			public function zoomOff():void
+			{
+				zoomPercent =prevErea.zoomPreview();
+			}
+
+			/**
+			 *  プレビューのフォーマット全体表示.
+			 */
+			public function zoomFitAll():void
+			{
+				zoomPercent =prevErea.zoomFitAll(previewObj);
+			}
+
+			/**
+			 *  プレビューのフォーマット横幅合わせ表示.
+			 */
+			public function zoomFitWidth():void
+			{
+				zoomPercent = prevErea.zoomFitWidth(previewObj);
+			}
+
+			/**
+			 *  プレビューのフォーマット高さ合わせ表示.
+			 */
+			public function zoomFitHeight():void
+			{
+				zoomPercent = prevErea.zoomFitHeight(previewObj);
+			}
+		]]>
+	</fx:Script>
+	
+	<s:VGroup width="100%" height="100%" contentBackgroundColor="#C0C0C0">
+		<s:HGroup verticalAlign="middle">
+			<s:Label text="プレビュー：" />
+			<s:Button id="previewBTN" label="グリッドなし" click="doPreview();"/>
+			<s:Button id="previewGridBTN" label="グリッド付き" click="doPreviewGrid();"/>
+		</s:HGroup>
+		<s:HGroup verticalAlign="middle">
+			<s:Label text="現在のページだけ印刷：" />
+			<s:Button id="prtBTN" label="グリッドなし" click="doPrint();"/>
+			<s:Button id="prtGridBTN" label="グリッド付き" click="doPrintGrid();"/>
+		</s:HGroup>
+		<s:HGroup verticalAlign="middle">
+			<s:Label text="指定ページを印刷：" />
+			<s:Button id="prtPartBTN" label="グリッドなし" click="doPrintPart();"/>
+			<s:Button id="prtPartGridBTN" label="グリッド付き" click="doPrintPartGrid();"/>
+			<s:TextInput id="prtPartStart" text="0" restrict="[0-9]" />
+			<s:TextInput id="prtPartEnd" text="0" restrict="[0-9]" />
+		</s:HGroup>
+		<s:HGroup verticalAlign="middle">
+			<s:Label text="全ページを印刷：" />
+			<s:Button id="prtAllBTN" label="グリッドなし" click="doPrintAll();"/>
+			<s:Button id="prtAllGridBTN" label="グリッド付き" click="doPrintAllGrid();"/>
+		</s:HGroup>
+		<s:Button id="prtOnlyGridBTN" label="グリッドのみ印刷" click="doPrintOnlyGrid();"/>
+		<s:Label id="printStatus" text="(プリンタのステータス表示エリア)" />
+		<s:Group width="100%" height="100%">
+			<s:Panel x="20" y="20" width="95%" height="95%" title="プレビュー">
+				<s:VGroup width="100%" height="100%">
+					<s:HGroup width="100%" verticalAlign="middle" horizontalAlign="center">
+						<s:Button id="zoomOutBTN" label="ZOOM-OUT" click="zoomOut();"/>
+						<s:Label id="zoomLBL" text="{zoomPercent}%"/>
+						<s:Button id="zoomInBTN" label="ZOOM-IN" click="zoomIn();"/>
+						<s:Button id="zoomOffBTN" label="100%" click="zoomOff();"/>
+					</s:HGroup>
+					<s:HGroup width="100%" verticalAlign="middle" horizontalAlign="center">
+						<s:Button id="zoomFitAllBTN" label="ZOOM-FIT-ALL" click="zoomFitAll();"/>
+						<s:Button id="zoomFitWidthBTN" label="ZOOM-FIT-WIDTH" click="zoomFitWidth();"/>
+						<s:Button id="zoomFitHeightBTN" label="ZOOM-FIT-HEIGHT" click="zoomFitHeight();"/>
+					</s:HGroup>
+			
+					
+					<!-- プレビューコンテナー -->
+					<pr:PreviewContainer width="100%" height="100%" id="prevErea" />
+					<s:HGroup width="100%" verticalAlign="middle" horizontalAlign="center">
+						<s:Button id="topBTN" label="TOP" click="doTop();"/>
+						<s:Button id="prevBTN" label="&lt;&lt;" click="doPrev();"/>
+						<s:Label id="pageLBL" text="{pageNo}/{pageCount}"/>
+						<s:Button id="nextBTN" label="&gt;&gt;" click="doNext();"/>
+						<s:Button id="lastBTN" label="LAST" click="doLast();"/>
+					</s:HGroup>
+				</s:VGroup>
+			</s:Panel>
+		</s:Group>
+	</s:VGroup>
+	
+</s:Application>

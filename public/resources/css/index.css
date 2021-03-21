@@ -1,0 +1,173 @@
+@charset "UTF-8";
+
+/*
+*   Reflexサイト index用スタイルシート
+*   (c) Virtual Technology, Ltd.
+*
+*/
+
+/* ////////////////////////////////////////////////
+INDEX OUTLINE DESIGN
+//////////////////////////////////////////////// */
+#index #gnav ul,
+#index #contents_main{
+	width:980px;
+	margin:0 auto;
+	position:relative;
+	zoom:1;
+}
+
+/* clearfix */
+#index #gnav ul:after,
+#index #contents_main:after{
+    content: ""; 
+    display: block; 
+    clear: both;
+}
+
+/* ////////////////////////////////////////////////
+HEADER
+//////////////////////////////////////////////// */
+#index #siteHeader{
+	background:#fff url(../img/index/index_hero_bg.png) top center repeat-x;
+	padding:0px;
+}
+#index #siteHeaderInner{
+	background:none;
+	padding:0;
+}
+#index #siteHeader hgroup{float:none; width:100%;}
+
+#index #siteHeader hgroup h1{ /*サイトロゴ*/
+	width:1025px;
+	height:445px;
+	padding-top:0px;
+	margin-left:22px;
+	float:none;
+}
+#index #siteHeader hgroup h2{ /*VTECのクラウドサービス*/
+	/*margin-right:45px;*/
+	position:absolute;
+}
+
+/* GLOBAL NAVI
+----------------------------------------------------*/
+#index #gnav{
+	position:relative;
+	bottom: auto;
+	right: auto;
+	text-align:center;
+	float:none;
+}
+#index #gnav ul{
+	padding:1em 0;
+	text-align:center;
+}
+#index #gnav li{
+	padding:0 0.5em;
+}
+
+/* ////////////////////////////////////////////////
+CONTENTS
+//////////////////////////////////////////////// */
+/* TILE NAV */
+#index #contents_intro nav.tile_nav li{
+	padding:15px;
+	margin:2px;
+}
+	#index #contents_intro nav.tile_nav li:first-child{
+		-webkit-border-top-left-radius: 10px;
+		-moz-border-radius-topleft: 10px;
+		border-top-left-radius: 10px;
+		-webkit-border-bottom-left-radius: 10px;
+		-moz-border-radius-bottomleft: 10px;
+		border-bottom-left-radius: 10px;
+	}
+	#index #contents_intro nav.tile_nav li:last-child{
+		-webkit-border-top-right-radius: 10px;
+		-moz-border-radius-topright: 10px;
+		border-top-right-radius: 10px;
+		-webkit-border-bottom-right-radius: 10px;
+		-moz-border-radius-bottomright: 10px;
+		border-bottom-right-radius: 10px;
+	}
+
+/* INFORMATION & LIKE BOX
+----------------------------------------------------*/
+#information{
+	float:left;
+	width:64%;
+	background:url(../img/index/twitter_icon.png) top right no-repeat;
+}
+#facebook_likebox{
+	float:left;
+	width:36%;
+	height:300px;
+	background:url(../img/index/facebook_icon.png) 0 50px no-repeat;
+}
+#facebook_likebox .fb-like-box{
+margin-left:63px;
+margin-top:2em;
+} 
+
+/* INFORMATION */
+#information header,
+#information .content,
+#information .more_btn{
+	width:90%;
+}
+#information header{
+	background:url(../img/dotAqua_line.gif) bottom left repeat-x;
+	padding-bottom:2px;
+	padding-top:2em;
+	position:relative;
+	overflow: hidden;
+}
+#information header h2.ttl{float:left;width:50%;}
+#information header aside{
+	float:right;
+	width:40%;
+	padding: 0.6em 0;
+	text-align: right;
+}
+#information li{list-style-type:none;}
+#information article{
+	border-bottom:1px dotted #ccc;
+	padding:1em 0;
+}
+#information article time{
+	font-size:0.75em;
+	font-weight:bold;
+	margin-bottom:1em;
+	display:block;
+}
+#information article time,
+#information article time a:link,
+#information article time a:visited{color:#999;}
+#information article time a:hover,
+#information article time a:active{background:transparent;color:#ccc;}
+
+#information article p{
+	font-size:0.87em;
+}
+
+/* TITLE
+----------------------------------------------------*/
+#information header h2.ttl{
+	color:#000;
+	font-size:1.12em;
+	font-weight:bold;
+	text-align:left;
+	padding:0.5em 0;
+}
+#information header aside{
+	color:#ccc;
+	font-family:"Arial Rounded MT Bold";
+	font-size:1em;
+}
+
+
+/* ////////////////////////////////////////////////
+FOOTER
+//////////////////////////////////////////////// */
+

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>仕様 | ReflexWorks（リフレックスワークス）</title>
+<meta name="format-detection" content="telephone=no" />
+<meta name="keywords" content="ReflexWorks,リフレックスワークス,プライベートクラウド,KVS,トランザクション,Web帳票" />
+<meta name="description" content="ReflexWorksのドキュメント" />
+<meta name="author" content="Virtual Technology,Ltd." />
+<meta property="og:title" content="仕様 | ReflexWorks（リフレックスワークス）" />
+<meta property="og:type" content=website />
+<meta property="og:url" content="http://reflexworks.jp/documentation.html" />
+<meta property="og:image" content="http://reflexworks.jp/resources/img/siteicon.png" />
+<meta property="og:site_name" content="ReflexWorks（リフレックスワークス）" />
+<meta property="og:description" content="ReflexWorksのドキュメント" />
+
+<link rel="author" title="VTECH - Virtual Technology's Portal Site" href="http://www.virtual-tech.net/" />
+<link rel="shortcut icon" type="image/vnd.microsoft.icon" sizes="16x16" href="/resources/img/favicon.ico" />
+<link rel="icon" type="image/gif" href="/resources/img/favicon.ico" />
+
+<link rel="index" href="/" title="トップページ" />
+
+<link rel="stylesheet" href="resources/css/html5reset.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="resources/js/common.js"></script>
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<script src="resources/js/jquery.ifixpng.js"></script>
+<script>
+$('img[@src$=.png]').ifixpng();
+</script>
+<![endif]-->
+<link rel="stylesheet" href="resources/css/common.css" />
+
+<!--google analytics-->
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-31830409-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = 'http://www.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</head>
+<body id="document">
+<div id="pagewrap">
+<header id="siteHeader">
+<div id="siteHeaderInner">
+<hgroup>
+<h1><a href="/"><img src="resources/img/logo.png" alt="ReflexWorks（リフレックスワークス）" /></a></h1>
+<h2><a href="contact.html#company"><img src="resources/img/vtec_logo.png" alt="Virtual Technology" /></a></h2>
+<h3>容易なスケールアウト拡張とトランザクション処理を実現する分散KVS基盤</h3>
+</hgroup>
+<nav id="gnav">
+<ul class="inline-list">
+<li><a href="about.html">概要</a></li>
+<li><a href="features.html">特長</a></li>
+<li><a href="components.html">製品構成</a></li>
+<li><a href="documentation.html" class="visiting">仕様</a></li>
+<li><a href="pricing.html">価格</a></li>
+<li><a href="success-stories.html">導入事例</a></li>
+<li id="gnav_contact"><a href="contact.html">お問合せ</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<!--//#siteHeader-->
+
+<div id="siteContents">
+<article id="contents_main">
+<header>
+<h1 id="page_ttl">仕様</h1>
+</header>
+<!-- 
+
+<div id="contents_intro">
+<section class="section_group">
+<h2 class="ttl">ReflexWorksのドキュメント</h2>
+<p style="text-align:center;">作成中です。</p> 
+<!-- <p style="text-align:center;">左のドキュメントメニューをクリックすると右のフレームの中にドキュメントが表示されます。</p> 
+</section><!--//.section_group
+</div> -->
+<!--//#contents_intro-->
+
+<section class="section_group">
+
+<div id="side_nav">
+
+<nav id="reflexCore" class="block">
+<h3 class="ttl">Tagging Service/vte.cx</h3>
+<div class="content">
+<ol class="list">
+<li><a href="documentation.html#taggingservice.html#O">概要</a>
+	<ul class="list">
+	<li><a href="documentation.html#taggingservice.html#O1">REST APIによるリソース管理</a></li>
+	<li><a href="documentation.html#taggingservice.html#O2">ソフトスキーマと複合文書管理</a></li>
+	<li><a href="documentation.html#taggingservice.html#O3">マルチテナントアーキテクチャー</a></li>
+	</ul>
+</li>	
+<li><a href="documentation.html#taggingservice.html#R">リソース管理</a>
+	<ul class="list">
+	<li><a href="documentation.html#taggingservice.html#R1">Keyと階層管理</a></li>
+	<li><a href="documentation.html#taggingservice.html#R2">ATOM項目とユーザ定義項目</a></li>
+	<li><a href="documentation.html#taggingservice.html#R3">Entryの構造</li>
+	<li><a href="documentation.html#taggingservice.html#R4">リクエストヘッダとレスポンス形式指定パラメータ</a></li>
+	<li><a href="documentation.html#taggingservice.html#R5">idとバージョン管理、楽観的排他制御</a></li>
+	<li><a href="documentation.html#taggingservice.html#R6">トランザクション処理</a></li>
+	<li><a href="documentation.html#taggingservice.html#R7">別名(alias)</a></li>
+	<li><a href="documentation.html#taggingservice.html#R8">シャドウと他ノード検索</a></li>
+	<li><a href="documentation.html#taggingservice.html#R9">管理情報の共有</a></li>
+	<li><a href="documentation.html#taggingservice.html#R10">採番</a></li>
+	<li><a href="documentation.html#taggingservice.html#R11">リダイレクト</a></li>
+	<li><a href="documentation.html#taggingservice.html#R12">内部コンテンツ</a></li>
+	<li><a href="documentation.html#taggingservice.html#R13">外部コンテンツ</a></li>	
+	</ul>
+</li>	
+<li><a href="documentation.html#taggingservice.html#RX">特別なリソース</a>
+	<ul class="list">
+	<li><a href="documentation.html#taggingservice.html#RX1">設定情報</a></li>
+	<li><a href="documentation.html#taggingservice.html#RX2">HTMLコンテンツ</a></li>
+	<li><a href="documentation.html#taggingservice.html#RX3">グループ</li>
+	<li><a href="documentation.html#taggingservice.html#RX4">ログ</li>
+	</ul>
+</li>	
+<li><a href="documentation.html#taggingservice.html#C">アクセスコントロール</a>
+	<ul class="list">
+	<li><a href="documentation.html#taggingservice.html#C1">フォルダACL</a></li>
+	<li><a href="documentation.html#taggingservice.html#C2">Low権限の例</a></li>
+	<li><a href="documentation.html#taggingservice.html#C3">Own権限についての例</li>
+	<li><a href="documentation.html#taggingservice.html#C4">-(マイナス)スコープの例</li>
+	</ul>
+</li>	
+<li><a href="documentation.html#taggingservice.html#GR">グループと共有</a>
+	<ul class="list">
+	<li><a href="documentation.html#taggingservice.html#GR1">グループEntryの作成</a></li>
+	<li><a href="documentation.html#taggingservice.html#GR2">グループ権限の設定</a></li>
+	<li><a href="documentation.html#taggingservice.html#GR3">グループメンバーの追加</li>
+	<li><a href="documentation.html#taggingservice.html#GR4">メンバーによる承認</li>
+	<li><a href="documentation.html#taggingservice.html#GR5">グループ共有フォルダ</li>
+	<li><a href="documentation.html#taggingservice.html#GR6">グループ共有フォルダの例</li>
+	</ul>
+</li>	
+<li><a href="documentation.html#taggingservice.html#A">ユーザ管理</a>
+	<ul class="list">
+	<li><a href="documentation.html#taggingservice.html#A1">メールアドレス</a></li>
+	<li><a href="documentation.html#taggingservice.html#A2">ユーザアカウント</a></li>
+	<li><a href="documentation.html#taggingservice.html#A3">グループキー(GroupKey)</a></li>
+	<li><a href="documentation.html#taggingservice.html#A4">uid検索</a></li>
+	<li><a href="documentation.html#taggingservice.html#A5">ユーザ情報取得(whoami)</a></li>
+	<li><a href="documentation.html#taggingservice.html#A6">認証チェックとRXID取得</a></li>
+	<li><a href="documentation.html#taggingservice.html#A7">サービス作成者</a></li>
+	<li><a href="documentation.html#taggingservice.html#A8">サービス管理権限</a></li>
+	<li><a href="documentation.html#taggingservice.html#A9">ユーザ管理権限</a></li>
+	<li><a href="documentation.html#taggingservice.html#A10">コンテンツ管理権限</a></li>
+	<li><a href="documentation.html#taggingservice.html#A11">ユーザステータスの管理</a></li>
+	<li><a href="documentation.html#taggingservice.html#A12">ユーザステータスの参照</a></li>
+	<li><a href="documentation.html#taggingservice.html#A13">ユーザステータスの更新</a></li>
+	<li><a href="documentation.html#taggingservice.html#A14">ログイン</a></li>	
+	<li><a href="documentation.html#taggingservice.html#A15">ログアウト</a></li>	
+	<li><a href="documentation.html#taggingservice.html#A16">ユーザ仮登録</a></li>	
+	<li><a href="documentation.html#taggingservice.html#A17">パスワードリセット</a></li>	
+	<li><a href="documentation.html#taggingservice.html#A18">パスワード変更</a></li>	
+	<li><a href="documentation.html#taggingservice.html#A19">管理者によるユーザ登録</a></li>	
+	</ul>
+</li>
+<li><a href="documentation.html#taggingservice.html#Z">セキュリティの考慮</a>
+	<ul class="list">
+	<li><a href="documentation.html#taggingservice.html#Z1">CSRF対策</a></li>
+	<li><a href="documentation.html#taggingservice.html#Z2">DoS(リピート)攻撃対策</a></li>
+	</ul>
+</li>	
+<li><a href="documentation.html#taggingservice.html#K">認証キーとーとトークン</a>
+	<ul class="list">
+	<li><a href="documentation.html#taggingservice.html#K1">Accesstoken</a></li>
+	<li><a href="documentation.html#taggingservice.html#K2">Linktoken</a></li>
+	<li><a href="documentation.html#taggingservice.html#K3">Accesskey</a></li>
+	<li><a href="documentation.html#taggingservice.html#K4">Platformトークン</a></li>
+	<li><a href="documentation.html#taggingservice.html#K5">APIKey</a></li>
+	<li><a href="documentation.html#taggingservice.html#K6">ワンタイムトークン(RXID)</a></li>
+	</ul>
+</li>	
+<li><a href="documentation.html#taggingservice.html#G">GET(リソース取得)</a>
+	<ul class="list">
+	<li><a href="documentation.html#taggingservice.html#G1">Entry取得</a></li>
+	<li><a href="documentation.html#taggingservice.html#G2">Feed取得</a></li>
+	<li><a href="documentation.html#taggingservice.html#G3">条件検索</li>
+	<li><a href="documentation.html#taggingservice.html#G4">getMulti</a></li>
+	<li><a href="documentation.html#taggingservice.html#G5">ソート</a></li>
+	<li><a href="documentation.html#taggingservice.html#G6">件数取得</a></li>
+	<li><a href="documentation.html#taggingservice.html#G7">ページネーション</a></li>
+	<li><a href="documentation.html#taggingservice.html#G8">fetch limitと対応方法</a></li>
+	</ul>
+</li>	
+<li><a href="documentation.html#taggingservice.html#I">採番処理</a>
+	<ul class="list">
+	<li><a href="documentation.html#taggingservice.html#I1">allocids</a></li>
+	<li><a href="documentation.html#taggingservice.html#I2">setids</a></li>
+	<li><a href="documentation.html#taggingservice.html#I3">addids</li>
+	<li><a href="documentation.html#taggingservice.html#I4">rangeids</a></li>
+	</ul>
+</li>	
+<li><a href="documentation.html#taggingservice.html#P">POST(リソース登録)</a>
+	<ul class="list">
+	<li><a href="documentation.html#taggingservice.html#P1">Entry登録</a></li>
+	<li><a href="documentation.html#taggingservice.html#P2">Feed登録</a></li>
+	<li><a href="documentation.html#taggingservice.html#P3">別名(Alias)登録の注意点</li>
+	<li><a href="documentation.html#taggingservice.html#P4">ファイルアップロード</li>
+	</ul>
+</li>	
+<li><a href="documentation.html#taggingservice.html#U">PUT(リソース更新)</a>
+	<ul class="list">
+	<li><a href="documentation.html#taggingservice.html#U1">Entry更新</a></li>
+	<li><a href="documentation.html#taggingservice.html#U2">Feed更新</a></li>
+	</ul>
+</li>	
+<li><a href="documentation.html#taggingservice.html#D">DELETE(リソース削除)</a>
+	<ul class="list">
+	<li><a href="documentation.html#taggingservice.html#D1">Entry削除</a></li>
+	<li><a href="documentation.html#taggingservice.html#D2">Feed削除</a></li>
+	<li><a href="documentation.html#taggingservice.html#D3">メソッドオーバーライド</a></li>
+	</ul>
+</li>	
+<li><a href="documentation.html#taggingservice.html#E">データ操作の例</a>
+	<ul class="list">
+	<li><a href="documentation.html#taggingservice.html#E1">登録:POST</a></li>
+	<li><a href="documentation.html#taggingservice.html#E2">検索:GET</a></li>
+	<li><a href="documentation.html#taggingservice.html#E3">更新:PUT</a></li>
+	<li><a href="documentation.html#taggingservice.html#E4">削除:DELETE</a></li>
+	</ul>
+</li>	
+<li><a href="documentation.html#taggingservice.html#S">署名</a>
+	<ul class="list">
+	<li><a href="documentation.html#taggingservice.html#S1">署名の付与</a></li>
+	<li><a href="documentation.html#taggingservice.html#S2">署名の削除</a></li>
+	<li><a href="documentation.html#taggingservice.html#S3">署名の検証</a></li>
+	<li><a href="documentation.html#taggingservice.html#S4">署名値の計算方法</a></li>
+	</ul>
+</li>	
+<li><a href="documentation.html#taggingservice.html#T">テンプレートによるスキーマ定義</a>
+	<ul class="list">
+	<li><a href="documentation.html#taggingservice.html#T1">スキーマ記述ルール</a></li>
+	<li><a href="documentation.html#taggingservice.html#T2">スキーマ運用ルール</a></li>
+	<li><a href="documentation.html#taggingservice.html#T3">テンプレートサンプル</a></li>
+	<li><a href="documentation.html#taggingservice.html#T4">Index、暗号化、項目ACL</a></li>
+	<li><a href="documentation.html#taggingservice.html#T5">スキーマに対応したJSONのサンプル</a></li>
+	<li><a href="documentation.html#taggingservice.html#T6">スキーマに対応したXMLのサンプル</a></li>
+	</ul>
+</li>	
+<li><a href="documentation.html#taggingservice.html#N">通知機能</a>
+	<ul class="list">
+	<li><a href="documentation.html#taggingservice.html#N1">メール送信</a></li>
+	<li><a href="documentation.html#taggingservice.html#N2">WebHook</a></li>
+	<li><a href="documentation.html#taggingservice.html#N3">WebSocket</a></li>
+	<li><a href="documentation.html#taggingservice.html#N4">MobilePush</a></li>
+	</ul>
+</li>	
+<li><a href="documentation.html#taggingservice.html#J">サーバサイドJavaScript</a>
+	<ul class="list">
+	<li><a href="documentation.html#taggingservice.html#J1">実行の仕組みと定義方法</a></li>
+	<li><a href="documentation.html#taggingservice.html#J2">ReflexContext APIs</a></li>
+	<li><a href="documentation.html#taggingservice.html#J3">saveFiles</a></li>
+	<li><a href="documentation.html#taggingservice.html#J4">toPDF</a></li>
+	<li><a href="documentation.html#taggingservice.html#J5">toXls</a></li>
+	<li><a href="documentation.html#taggingservice.html#J6">メール受信</a></li>
+	<li><a href="documentation.html#taggingservice.html#J7">CSV受信</a></li>
+	</ul>
+</li>	
+<li><a href="documentation.html#taggingservice.html#H">HTTPステータスコードとメッセージ</a>
+</li>	
+<li><a href="documentation.html#reflexContext.html#.addids">ReflexContext JSdoc</a>
+</li>	
+
+<!-- 
+<li><a href="taggingservice_architecture">オンプレミス</a>
+	<ul class="list">
+	<li><a href="taggingservice_custom">カスタムコード開発</a></li>
+	<li><a href="taggingservice_custom_provider">プロバイダサービス</a></li>
+	<li><a href="taggingservice_system">システム設定</a></li>
+	</ul>
+</li> -->
+</ol>
+</div>
+</nav>
+
+<nav id="reflex_core" class="block">
+<h3 class="ttl">Reflex Core/Mapper</h3> 
+<div class="content">
+<ol class="list">
+	<li><a href="documentation.html#reflexcore.html#C">Reflex Core Module</a>
+	<ul class="list">
+	<li><a href="documentation.html#reflexcore.html#C1">記述ルール</a></li>
+	<li><a href="documentation.html#reflexcore.html#C2">XML名前空間の指定</a></li>
+	<li><a href="documentation.html#reflexcore.html#C3">属性の指定</a></li>
+	<li><a href="documentation.html#reflexcore.html#C4">テキストノード</a></li>
+	<li><a href="documentation.html#reflexcore.html#C5">特殊文字の変換</a></li>
+	</ul>
+	<li><a href="documentation.html#reflexcore.html#M">ReflexMapper</a>
+	<ul class="list">
+	<li><a href="documentation.html#reflexcore.html#M1">テンプレートとクラスの関係</a></li>
+	<li><a href="documentation.html#reflexcore.html#M2">テンプレートから静的クラスの生成</a></li>
+	</ul>
+</li>	
+</ol>
+</div>
+</nav>
+
+<nav id="reflex_iText" class="block">
+<h3 class="ttl">Reflex iText</h3> 
+<div class="content">
+<ol class="list">
+	<li><a href="documentation.html#reflexitext.html#A">概要</a>
+	<li><a href="documentation.html#reflexitext.html#B">基本サンプル</a>
+	<ul class="list">
+	<li><a href="documentation.html#reflexitext.html#B1">Hello World</a></li>
+	<li><a href="documentation.html#reflexitext.html#B2">スタイルシートの適用</a></li>
+	</ul>
+	<li><a href="documentation.html#reflexitext.html#T">テンプレート</a>
+	<ul class="list">
+	<li><a href="documentation.html#reflexitext.html#T1">テンプレートの例</a></li>
+	<li><a href="documentation.html#reflexitext.html#T2">テンプレートの構成</a></li>
+	</ul>
+	<li><a href="documentation.html#reflexitext.html#P">ページ構造</a>
+	<ul class="list">
+	<li><a href="documentation.html#reflexitext.html#P1">基底要素</a></li>
+	<li><a href="documentation.html#reflexitext.html#P2">第一レベル要素</a></li>
+	<li><a href="documentation.html#reflexitext.html#P3">第二レベル要素</a></li>
+	</ul>
+	<li><a href="documentation.html#reflexitext.html#S">ページ設定</a>
+	<ul class="list">
+	<li><a href="documentation.html#reflexitext.html#S1">ページに関する定義</a></li>
+	<li><a href="documentation.html#reflexitext.html#S2">PDF文書全体に関する定義</a></li>
+	</ul>
+	<li><a href="documentation.html#reflexitext.html#C">ページ制御</a>
+	<ul class="list">
+	<li><a href="documentation.html#reflexitext.html#C1">ページの判定</a></li>
+	<li><a href="documentation.html#reflexitext.html#C2">nodata</a></li>
+	<li><a href="documentation.html#reflexitext.html#C3">ページ番号</a></li>
+	<li><a href="documentation.html#reflexitext.html#C4">ページ制御サンプル</a></li>
+	</ul>
+	<li><a href="documentation.html#reflexitext.html#I">ページの再利用</a>
+	<ul class="list">
+	<li><a href="documentation.html#reflexitext.html#I1">includeマクロサンプル</a></li>
+	</ul>
+	<li><a href="documentation.html#reflexitext.html#O">その他のマクロ</a>
+	<ul class="list">
+	<li><a href="documentation.html#reflexitext.html#O1">ifマクロによる条件分岐</a></li>
+	<li><a href="documentation.html#reflexitext.html#O2">ifマクロサンプル</a></li>
+	<li><a href="documentation.html#reflexitext.html#O3">forマクロによる繰り返し処理</a></li>
+	<li><a href="documentation.html#reflexitext.html#O4">forマクロサンプル</a></li>
+	<li><a href="documentation.html#reflexitext.html#O5">添え字（-i, -j）について</a></li>
+	<li><a href="documentation.html#reflexitext.html#O6">二次元配列データのforマクロサンプル</a></li>
+	</ul>
+	<li><a href="documentation.html#reflexitext.html#G">pageタグ</a>
+	<li><a href="documentation.html#reflexitext.html#H">HTML互換タグ</a>
+	<ul class="list">
+	<li><a href="documentation.html#reflexitext.html#H1">table, tr, td</a></li>
+	<li><a href="documentation.html#reflexitext.html#H2">p, div, span, br</a></li>
+	<li><a href="documentation.html#reflexitext.html#H3">font</a></li>
+	<li><a href="documentation.html#reflexitext.html#H4">a</a></li>
+	<li><a href="documentation.html#reflexitext.html#H5">ul, ol, li</a></li>
+	<li><a href="documentation.html#reflexitext.html#H6">img</a></li>
+	</ul>
+	<li><a href="documentation.html#reflexitext.html#E">拡張機能</a>
+	<ul class="list">
+	<li><a href="documentation.html#reflexitext.html#E1">図形</a></li>
+	<li><a href="documentation.html#reflexitext.html#E2">バーコード</a></li>
+	<li><a href="documentation.html#reflexitext.html#E3">PNGファイル出力</a></li>
+	<li><a href="documentation.html#reflexitext.html#E4">PDF合成</a></li>
+	</ul>
+	<li><a href="documentation.html#reflexitext.html#G">グラフ</a>
+	<ul class="list">
+	<li><a href="documentation.html#reflexitext.html#G1">piechart</a></li>
+	<li><a href="documentation.html#reflexitext.html#G2">barchart</a></li>
+	<li><a href="documentation.html#reflexitext.html#G3">linechart</a></li>
+	<li><a href="documentation.html#reflexitext.html#G4">areachart</a></li>
+	<li><a href="documentation.html#reflexitext.html#G5">timeserieschart</a></li>
+	<li><a href="documentation.html#reflexitext.html#G6">candlestickchart</a></li>
+	<li><a href="documentation.html#reflexitext.html#G7">ganttchart</a></li>
+	</ul>
+	<li><a href="documentation.html#reflexitext.html#X">暗号化と署名</a>
+	<ul class="list">
+	<li><a href="documentation.html#reflexitext.html#X1">暗号化のサンプル</a></li>
+	<li><a href="documentation.html#reflexitext.html#X2">署名</a></li>
+	<li><a href="documentation.html#reflexitext.html#X3">署名のサンプル</a></li>
+	</ul>
+</ol>
+</div>
+</nav>
+
+<!-- 
+
+<nav id="taggingService" class="block">
+<h3 class="ttl">Tagging Service</h3>
+<div class="content">
+<ol class="list">
+<li><a href="taggingservice">Tagging Service概要</a></li>
+<li>機能説明
+	<ul class="list">
+	<li><a href="taggingservice">(1)リソースの階層管理とREST API</a></li>
+	<li><a href="taggingservice_2">(2)リソースのATOM表現について</a></li>
+	<li><a href="taggingservice_3">(3)ログイン認証とACLによる権限管理</a></li>
+	<li><a href="taggingservice_4">(4)WebHook機能とServer Side Script機能</a></li>
+	<li><a href="taggingservice_5">(5)ワークフローと受注システムへの適用</a></li>
+	</ul>
+</li>
+<li><a href="#virtualcart">VirtualCartと商品検索サービス</a></li>
+</ol>
+</div>
+</nav>
+
+<!--nav id="reflexBDB" class="block">
+<h3 class="ttl">Reflex BDB</h3>
+<ol class="list">
+<li><a href="#reflexbdb">Reflex BDB概要</a></li>	
+</ol>
+</nav-->
+</div>
+<!--//#side_nav-->
+
+<script>
+<!--
+$(document).ready(function(){
+	var target_id = window.location.hash.substring(1);
+	target_id = target_id ? target_id : 'taggingservice.html#O';
+	$('#read_document')
+	.attr('src', target_id)
+	.off();
+});
+$(function(){
+	$('#side_nav').find('li').find('a').off().click(function(){
+
+		var speed = 400;// ミリ秒
+		var target_id = $(this).attr('href').split('#')[1]; // ドキュメントのid
+		var target_hash = '#'+$(this).attr('href').split('#')[2];
+
+		var position = {scrollTop:$('#read_document').offset().top - 40}; // 移動スクロール位置
+
+		// iframeのsrcを変更し、縦幅をonload時のhtmlの高さに合わせる
+		$('#read_document')
+			.attr('src', target_id+target_hash)
+	    	.off()
+		    ;
+
+		return false;
+	});
+});
+-->
+</script>
+<iframe id="read_document" src=""></iframe>
+</section>
+<!--//.section_group-->
+
+</article>
+<!--//#contents_main-->
+</div>
+<!--//#siteContents-->
+
+<footer id="siteFooter">
+<div id="siteFooterInner">
+<aside id="sns_links">
+<ul class="inline-list">
+<li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-lang="ja">ツイート</a></li>
+<li class="facebook"><div class="fb-like" data-send="false" data-layout="button_count" data-width="118" data-show-faces="false"></div></li>
+<li class="hatebu"><a href="javascript:'http://b.hatena.ne.jp/entry/'+document.location.href;" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
+<li class="G-plus"><div class="g-plusone" data-size="medium"></div></li>
+</ul>
+</aside>
+<div class="pagetop"><a href="#siteHeader"><img src="resources/img/pagetop_btn.png" alt="page top▲" /></a></div>
+
+<nav id="fnav">
+<ul class="inline-list">
+<li><a href="/">ホーム</a></li>
+<li><a href="about.html">概要</a></li>
+<li><a href="features.html">特長</a></li>
+<li><a href="components.html">製品構成</a></li>
+<li><a href="documentation.html">仕様</a></li>
+<li><a href="pricing.html">価格</a></li>
+<li><a href="success-stories.html">導入事例</a></li>
+<li><a href="contact.html">お問合せ</a></li>
+</ul>
+</nav>
+
+<aside id="development_agent" class="footer_sections">
+<section class="block">
+<h1>ReflexWorks技術開発・運営</h1>
+<ul class="inline-list">
+<li><a href="contact.html#company"><img src="resources/img/vtec_bnr.png" alt="有限会社バーチャルテクノロジー" /></a></li>
+<li><a href="http://blog.virtual-tech.net/"><img src="resources/img/vtecblog_bnr.png" alt="ぶいてく。｜ReflexWorks、XML、クラウドコンピューティングなどのTips BLOG" /></a></li>
+</ul>
+</section>
+<section class="block">
+<h1>ReflexWorks販売代理店</h1>
+<ul class="inline-list">
+<li><a href="http://www.cresco.co.jp/"><img src="resources/img/cresco_bnr.png" alt="株式会社クレスコ" rel="external" /></a></li>
+</ul>
+</section>
+</aside><!--//#credit-->
+
+<p id="copyright"><small><span>&#169;</span>2017 Virtual Technology,Ltd.</small></p>
+
+</div>
+
+</footer>
+<!--//#siteFooter-->
+</div>
+</body>
+</html>

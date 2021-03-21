@@ -1,0 +1,22 @@
+a[href $='.pdf'] { 
+   padding-right: 18px;
+   background: transparent url(../images/icon_pdf.gif) no-repeat center right;
+}
+
+a[href $='.doc'] { 
+   padding-right: 18px;
+   background: transparent url(../images/icon_doc.gif) no-repeat center right;
+}
+
+a[href $='.xls'] { 
+   padding-right: 18px;
+   background: transparent url(../images/icon_xls.gif) no-repeat center right;
+}
+
+a[href ^="mailto:"] {
+   padding-right: 20px;
+   background: transparent url(../images/icon_mail.gif) no-repeat center right;
+}
+
+<!--上記の拡張子のリンクを貼ると指定した画像を表示-->
+

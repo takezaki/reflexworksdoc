@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<!--
+	印刷フォーマットサンプル。
+	
+	基底クラスとして「BaseForm」を使用します。
+	印刷制御を行う「print_lib.*」ネームスペースをバインドしてください。
+	バーコードを使用するには、「print_lib.barcode.*」ネームスペースをバインドしてください。
+	ページ内で使用するデータ数は、「entity_req_count」パラメータで指定してください。（デフォルト：1）
+	ページサイズは「paper_height_pcdpi」および「paper_width_pcdpi」パラメータで指定可能です。（デフォルト：A4、単位:72dpi）
+-->
+<pr:BaseForm xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:s="library://ns.adobe.com/flex/spark"
+        xmlns:mx="library://ns.adobe.com/flex/mx"
+        xmlns:pr="print_lib.*"
+        xmlns:bc="print_lib.barcode.*"
+		entity_req_count="2"
+		>
+		
+	<!-- ヘッダ -->
+	<s:VGroup x="50" y="30">
+		<s:Label width="500" fontSize="20" textAlign="center" text="Flash高品質印刷ライブラリ" />
+		<s:Label width="500" fontSize="12" textAlign="center" text="FlashPlayer上からサーバーを介することなく、直接プリンタへの印刷を実現します。" />
+		<s:Label width="500" fontSize="12" textAlign="center" text="！！！拡大/縮小対応のプレビュー機能搭載！！！" />
+		<s:Label width="500" fontSize="12" text="（MXMLでの印刷フォーマット、データバインディング、各種バーコードに対応）" />
+		<s:Line width="500">
+			<s:stroke>
+				  <s:SolidColorStroke color="0x000000" weight="2" caps="square"/>
+			 </s:stroke>
+		</s:Line>
+		<s:Label width="500" text="バーコードサンプル" />
+		<s:HGroup>
+			<s:VGroup>
+				<s:Label text="Ean128-91548057003976147065935390525009082300300009"/>
+				<bc:Ean128 width="200" height="30" code="91548057003976147065935390525009082300300009" />
+				<s:Label text="Code128A-312500(\u005cu0009)ABC" />
+				<bc:Code128 width="100" height="30" scode="A" code="312500\u0009ABC" />
+				<s:Label text="Code128B-312500xyuABC" />
+				<bc:Code128 width="100" height="30" scode="B" code="312500xyuABC" />
+				<s:Label text="Code128C-31250099" />
+				<bc:Code128 width="100" height="30" scode="B" code="31250099" />
+				<s:Label text="QRCode-01234567890ABCDabcdあいうえお朝日"/>
+				<bc:QRCode width="30" code="01234567890ABCDabcdあいうえお朝日" />
+			</s:VGroup>
+			<s:VGroup>
+				<s:Label text="Code39-01234567890"/>
+				<bc:Code39 width="100" height="30" code="01234567890" />
+				<s:Label text="Codabar-A01234567890A"/>
+				<bc:Codabar width="100" height="30" code="A01234567890A" />
+				<s:Label text="Ean13-4901005135956"/>
+				<bc:Ean13 width="100" height="30" code="4901005135956" withlabel="true" />
+				<s:Label text="Ean8-01234565"/>
+				<bc:Ean8 width="100" height="30" code="01234565" withlabel="true"/>
+			</s:VGroup>
+		</s:HGroup>
+		<s:Line width="500">
+			<s:stroke>
+				  <s:SolidColorStroke color="0x000000" weight="2" caps="square"/>
+			 </s:stroke>
+		</s:Line>
+		<s:Label fontFamily="ＭＳ 明朝">各種フォントも高品質で印刷が可能です。</s:Label>
+		<s:HGroup>
+			<s:Label text="！！！" /><s:Label color="#FF0000" fontWeight="bold" text="カ" /><s:Label color="#00FF00" fontWeight="bold" text="ラ" /><s:Label color="#0000FF" fontWeight="bold" text="ー" /><s:Label text="対応！！！" />
+		</s:HGroup>
+		<s:Label>表形式・イメージ処理への対応も可能です。</s:Label>
+		<mx:Image height="100" source="@Embed(source='../assets/toplogo.png')" />
+		
+		<s:Group>
+			<s:Line width="500">
+				<s:stroke>
+					  <s:SolidColorStroke color="0x000000" weight="2" caps="square"/>
+				 </s:stroke>
+			</s:Line>
+			<!-- 左段組み(データ１) -->
+			<s:VGroup visible="{entity.getItemAt(current_index).addressId}" >
+				<s:Label text="(段組み：データバインディング１)"/>
+				<s:Label text="ID:{entity.getItemAt(current_index).addressId}"/>
+				<s:Label text="郵便番号:{entity.getItemAt(current_index).zipCode}"/>
+				<s:Label text="住所１:{entity.getItemAt(current_index).address1}"/>
+				<s:Label text="住所２:{entity.getItemAt(current_index).address2}"/>
+				<s:Label text="住所３:{entity.getItemAt(current_index).address3}"/>
+				<s:Label text="会社名:{entity.getItemAt(current_index).companyName}"/>
+				<s:Label text="部署名:{entity.getItemAt(current_index).department}"/>
+				<s:Label color="#FF0000" fontSize="20" text="氏名:{entity.getItemAt(current_index).name}"/>
+				<s:Label text="電話番号:{entity.getItemAt(current_index).phone}"/>
+				<s:Label text="会員ID:{entity.getItemAt(current_index).memberId}"/>
+				<s:Group>
+					<bc:Codabar width="60" height="20" code="A{entity.getItemAt(current_index).memberId}A" />
+					<s:Label y="20" fontSize="10" text="A{entity.getItemAt(current_index).memberId}A"/>
+				</s:Group>
+			</s:VGroup>
+
+			<!-- 右段組み(データ２) -->
+			<s:VGroup x="250" visible="{entity.getItemAt(current_index+1).addressId}"><!-- PAGE_RIGHT -->
+				<s:Label text="(段組み：データバインディング２)"/>
+				<s:Label text="ID:{entity.getItemAt(current_index+1).addressId}"/>
+				<s:Label text="郵便番号:{entity.getItemAt(current_index+1).zipCode}"/>
+				<s:Label text="住所１:{entity.getItemAt(current_index+1).address1}"/>
+				<s:Label text="住所２:{entity.getItemAt(current_index+1).address2}"/>
+				<s:Label text="住所３:{entity.getItemAt(current_index+1).address3}"/>
+				<s:Label text="会社名:{entity.getItemAt(current_index+1).companyName}"/>
+				<s:Label text="部署名:{entity.getItemAt(current_index+1).department}"/>
+				<s:Label color="#00FF00" fontSize="20" text="氏名:{entity.getItemAt(current_index+1).name}"/>
+				<s:Label text="電話番号:{entity.getItemAt(current_index+1).phone}"/>
+				<s:Label text="会員ID:{entity.getItemAt(current_index+1).memberId}"/>
+				<s:Group>
+					<bc:Codabar width="60" height="20" code="A{entity.getItemAt(current_index+1).memberId}A" />
+					<s:Label y="20" fontSize="10" text="A{entity.getItemAt(current_index+1).memberId}A"/>
+				</s:Group>
+			</s:VGroup>
+		</s:Group>
+	</s:VGroup>
+
+</pr:BaseForm>

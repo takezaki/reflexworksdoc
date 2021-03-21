@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>製品構成 | ReflexWorks（リフレックスワークス）</title>
+<meta name="format-detection" content="telephone=no" />
+<meta name="keywords" content="ReflexWorks,リフレックスワークス,プライベートクラウド,KVS,トランザクション,Web帳票" />
+<meta name="description" content="ReflexWorksのコンポーネント" />
+<meta name="author" content="Virtual Technology,Ltd." />
+<meta property="og:title" content="製品構成 | ReflexWorks（リフレックスワークス）" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://reflexworks.jp/components.html" />
+<meta property="og:image" content="http://reflexworks.jp/resources/img/siteicon.png" />
+<meta property="og:site_name" content="ReflexWorks（リフレックスワークス）" />
+<meta property="og:description" content="ReflexWorksのコンポーネント" />
+
+<link rel="author" title="VTECH - Virtual Technology's Portal Site" href="http://www.virtual-tech.net/" />
+<link rel="shortcut icon" type="image/vnd.microsoft.icon" sizes="16x16" href="/resources/img/favicon.ico" />
+<link rel="icon" type="image/gif" href="/resources/img/favicon.ico" />
+
+<link rel="index" href="/" title="トップページ" />
+
+<link rel="stylesheet" href="resources/css/html5reset.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="resources/js/common.js"></script>
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<script src="resources/js/jquery.ifixpng.js"></script>
+<script>
+$('img[@src$=.png]').ifixpng();
+</script>
+<![endif]-->
+<link rel="stylesheet" href="resources/css/common.css" />
+
+<!--google analytics-->
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-31830409-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = 'http://www.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</head>
+<body id="component">
+<div id="pagewrap">
+<header id="siteHeader">
+<div id="siteHeaderInner">
+<hgroup>
+<h1><a href="/"><img src="resources/img/logo.png" alt="ReflexWorks（リフレックスワークス）" /></a></h1>
+<h2><a href="contact.html#company"><img src="resources/img/vtec_logo.png" alt="Virtual Technology" /></a></h2>
+<h3>容易なスケールアウト拡張とトランザクション処理を実現する分散KVS基盤</h3>
+</hgroup>
+<nav id="gnav">
+<ul class="inline-list">
+<li><a href="about.html">概要</a></li>
+<li><a href="features.html">特長</a></li>
+<li><a href="components.html" class="visiting">製品構成</a></li>
+<li><a href="documentation.html">仕様</a></li>
+<li><a href="pricing.html">価格</a></li>
+<li><a href="success-stories.html">導入事例</a></li>
+<li id="gnav_contact"><a href="contact.html">お問合せ</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<!--//#siteHeader-->
+
+<div id="siteContents">
+<article id="contents_main">
+<header>
+<h1 id="page_ttl">製品構成</h1>
+</header>
+
+<div id="contents_intro">
+<section class="section_group">
+<h2 class="ttl">ReflexWorksのコンポーネント</h2>
+<figure class="img">
+<img src="resources/img/component/ReflexComponent_img.png" alt="" />
+</figure>
+</section><!--//.section_group-->
+</div>
+<!--//#contents_intro-->
+
+<section class="section_group">
+
+<section class="block">
+<p>ReflexWorksには次の４つのコンポーネントがあり、業務要件に応じて選択が可能です。</p>
+<nav class="tile_nav">
+<ul class="inline-list">
+<li><a href="#datastoreComponent"><img src="resources/img/component/datastoreComponent_tile.png" alt="データストア・コンポーネント-Reflex BDB-" /></a></li>
+<li><a href="#clientComponent"><img src="resources/img/component/clientComponent_tile.png" alt="クライアント通信・コンポーネント-ReflexJS-" /></a></li>
+<li><a href="#serviceComponent"><img src="resources/img/component/serviceComponent_tile.png" alt="サービス・コンポーネント-Tagging Service-" /></a></li>
+<li><a href="#printComponent"><img src="resources/img/component/printComponent_tile.png" alt="印刷・コンポーネント-Flash PrintAPI／Reflex iText-" /></a></li>
+</ul>
+</nav>
+<p><small>※データストア・コンポーネントとサービス・コンポーネントは組み合わせて使用します。</small></p>
+</section>
+
+<section id="datastoreComponent" class="block">
+<h3 class="ttl">データストア・コンポーネント</h3>
+<div class="content">
+	<section id="reflexBDB" class="block">
+	<h4 class="ttl">Reflex BDB</h4>
+	<div class="content">
+	<p>Reflex BDBは、<a href="http://www.oracle.com/jp/">Oracle社</a>のオープンソースであり、Pure Javaのキーバリュー型データストアであるBDB JEを使用しています。ハイパフォーマンスにデータへアクセスしつつ、トランザクションもサポートしています。また、アプリケーションやシステム、ハードウェアで致命的な障害が発生した場合も自動リカバリなどで対応します。Reflex BDBは、ATOM FeedのJavaオブジェクトを直接BDBに格納するためORM（オブジェクト関係マッピング）は必要ありません。<br />
+		<small>※ 弊社はOracle社と販売代理店契約を結び、BDB JEをReflexWorksに組み込んで販売する権利を有しています。</small></p>
+	<figure class="img"><img src="resources/img/component/BDB_img.png" alt="" /></figure>
+	<table class="table">
+	<tr>
+		<th>特長</th>
+		<td><ul class="list">
+			<li>Transactional Data Store</li>
+			<li>Javaで実装したBerkeley DB</li>
+			<li>JARファイルだから配布やインストールが容易</li>
+			<li>アプリケーション・コードと同じJVMで実行</li>
+			<li>シングルプロセス、マルチスレッドによるデータアクセス</li>
+			<li>435KB程度の軽量サイズ</li>
+		</ul></td>
+	</tr>
+	<tr>
+		<th>機能</th>
+		<td><ul class="list">
+			<li>複数レコード同時読み込み</li>
+			<li>読込み・書込み同時実行</li>
+			<li>複数レコード同時書き込み</li>
+			<li>トランザクション保証とリカバリ</li>
+			<li>レプリケーション機能</li>
+			<li>セカンダリインデックス</li>
+			<li>RANGE検索</li>
+		</ul></td>
+	</tr>
+	<tr>
+		<th>動作条件</th>
+		<td><p>JDK1.5以上</p></td>
+	</tr>
+	</table>
+	<aside>
+	<h5 class="ttl">BDBに関するその他の情報</h5>
+	<ul class="list">
+		<li><a href="http://www.oracle.com/technetwork/jp/database/berkeleydb/index-091216-ja.html" rel="external">Oracle Berkeley DB Java Edition - 日本オラクル</a></li>
+		<li><a href="http://cn.teldevice.co.jp/product/oracle/oracle_berkeley_db/index.html" rel="external">Oracle Berkeley DBの特徴 ハイパフォーマンスな組み込みデータベース・エンジン - 東京エレクトロンデバイス</a></li>
+		<li><a href="http://www.oracle.com/technetwork/products/berkeleydb/learnmore/bdb-je-architecture-whitepaper-366830.pdf" rel="external">Berkeley DB Java Edition Architecture - ORACLE</a> [PDF:580KB]</li>
+	</ul>
+	</aside>
+	</div>
+	</section>
+</div>
+<div class="pagetop"><a href="#siteHeader">PAGE TOP▲</a></div>
+</section>
+
+<section id="clientComponent" class="block">
+<h3 class="ttl">クライアント通信・コンポーネント</h3>
+<div class="content">
+	<section id="reflexJS" class="block">
+	<h4 class="ttl">ReflexJS</h4>
+	<div class="content">
+	<p>サーバコンポーネントと通信を行うためのjQueryコンポーネントです。通信機能およびオブジェクト変換に特化した軽量ライブラリであり、必要最低限の機能のみ提供しています。また、jQueryにより様々なブラウザの違いが吸収される（クロスブラウザ対応）ため開発が容易であることが特長です。</p>
+	<table class="table">
+	<tr>
+		<th>機能</th>
+		<td><ul class="list">
+		<li>REST通信機能<ul class="list">
+			<li>オブジェクトをJSON、XMLに変換してサーバに送信。</li>
+			<li>X-Override-Method対応。(PUT/DELETEリクエストをPOSTとして実行する）</li>
+			<li>サーバから取得したJSON、XMLをオブジェクトに変換。</li>
+			<li>エラーハンドリング。</li>
+			</ul></li>
+		</ul></td>
+	</tr>
+	<tr>
+		<th>動作条件</th>
+		<td><p>jQuery1.4上</p></td>
+	</tr>
+	</table>
+	</div>
+	</section>
+</div>
+<div class="pagetop"><a href="#siteHeader">PAGE TOP▲</a></div>
+</section>
+
+<section id="serviceComponent" class="block">
+<h3 class="ttl">サービス・コンポーネント</h3>
+<div class="content">
+	<p>KVSは単純なキーとバリューのデータであり、範囲検索や絞り込みといった条件を指定できないなどの理由からアプリケーション開発には困難がともないます。ReflexWorksが提供する「Tagging Service」であればデータの階層管理ができ、様々な検索条件を指定できるほか、アクセス制御やイベント通知などによりソーシャルでかつインタラクティブなアプリケーション構築を容易にします。</p>
+	
+	<section id="taggingService" class="block">
+	<h4 class="ttl">Tagging Service</h4>
+	<div class="content">
+	<p>Tagging Serviceは、統一したエンティティモデルとシンプルなREST APIによりデータストアなどの下位のレイヤーをアプリケーションから隠蔽します。ツリー構造の仮想フォルダ管理とREST APIによる直感的なデータアクセスが特長で、アクセス制御、共有設定、暗号化といった設定が可能です。また、WebHookとWebSocketによるイベント通知設定が行えます。アプリケーションで定義するスキーマ（ソフトスキーマ）はATOM形式をユーザ定義のスキーマに拡張可能であり、項目の追加変更が容易にできます。</p>
+	<figure class="img"><img src="resources/img/component/taggingService_img.png" alt="" /></figure>
+	<table class="table">
+	<tr>
+		<th>特長</th>
+		<td><ul class="list">
+			<li>様々なコンテンツをATOM Feedで表現し、URLによる階層型のリソース管理を行う。リソースは、XML、JSON、MessagePackなどで登録、取り出すことが可能。</li>
+			<li>HTMLやXML、JavaScriptなどのコンテンツをATOM entryのcontentとして格納可能。格納したコンテンツは直接ブラウザで表示可能。</li>
+			<li>CRUD操作をトリガーにクライアントへの通知(WebSocket)、他システムへの通知(WebHook)が可能。</li>
+		</ul></td>
+	</tr>
+	<tr>
+		<th>機能</th>
+		<td><ul class="list">
+			<li>XML(ATOM Feed)、JSON、MessagePackサポート</li>
+			<li>alias検索(リソースに別名をつけて検索)</li>
+			<li>property検索(リソースの複数の検索項目で検索）</li>
+			<li>アクセス制御(リソースの階層ごとにACLを設定)</li>
+			<li>WSSE認証</li>
+			<li>count機能(entryの個数を取得)</li>
+			<li>ページング機能（Pagination）</li>
+			<li>アクセスログ管理</li>
+		</ul></td>
+	</tr>
+	<tr>
+		<th>動作条件</th>
+		<td><p>JDK1.5以上</p></td>
+	</tr>
+	</table>
+	<aside>
+	<h5 class="ttl">関連情報</h5>
+	<ul class="list">
+		<li><a href="features.html#APIcreation">「仮想フォルダ管理 ／ 検索、複合文書管理」の特長（直感的なREST API）</a></li>
+		<li><a href="features.html#auth-integration">「アクセス制御、共有設定、暗号化」の特長（認証・認可機能）</a></li>
+		<li><a href="features.html#pushNotifications">「イベント通知」の特長（イベント通知機能）</a></li>
+		<li><a href="documentation.html#taggingservice_overview">「Tagging Service」の仕様（ドキュメント）</a></li>
+	</ul>
+	</aside>
+	</div>
+	</section>
+</div>
+<div class="pagetop"><a href="#siteHeader">PAGE TOP▲</a></div>
+</section>
+
+<section id="printComponent" class="block">
+<h3 class="ttl">印刷・コンポーネント</h3>
+<div class="content">
+	<p><a href="features.html#printing">→ ReflexWorksの特長「帳票印刷」について</a></p>	
+	<section id="printAPI" class="block">
+	<h4 class="ttl">Flash PrintAPI</h4>
+	<div class="content">
+	<p>Flash PrintAPIはFlashの印刷機能を利用した帳票印刷用ライブラリで、プレビュー表示とダイレクト印刷機能を提供します。Flex4のMXMLテンプレート利用と動的なデータバインドが可能であり、高品質かつ高速な印刷が可能です。サーバで帳票を作成するのではなく、基本的にクライアントのリソースだけを使うためサーバ資源を圧迫させることはありません。</p>
+	<table class="table">
+	<tr>
+		<th>特長</th>
+		<td><ul class="list">
+			<li>Flex4用 MXML形式(UTF-8)に準拠。</li>
+			<li>Labelのtext属性にエンティティ名を指定することでデータバインドが可能。1ページ内に複数のエンティティを指定可能。</li>
+			<li>自動スクロール、拡大/縮小、ページ切り替えに対応したプレビュー用UIコンポーネントを提供。</li></ul>
+		</td>
+	</tr>
+	<tr>
+		<th>機能</th>
+		<td><ul class="list">
+			<li>MXMLにて記載可能なUIComponentタグは全て使用可能。</li>
+			<li>MXMLの&lt;s:Label&gt;でレイアウト指定。</li>
+			<li>ページの高さや幅、ラベルの印字座標の指定を72dpiのピクセル座標で指定可能。座標数値は小数指定も可能。</li>
+			<li>プレビュー時は整数化された座標に表示され、印刷時はプリンタの解像度に合わせた座標に印刷される。</li>
+			<li>豊富なバーコードタグ<ul class="list">
+				<li>EAN128</li>
+				<li>CODE128</li>
+				<li>CODABAR/NW7</li>
+				<li>CODE39</li>
+				<li>EAN13/JAN13</li>
+				<li>EAN8/JAN8</li>
+				<li>QRCODE</li></ul>
+			</li></ul>
+		</td>
+	</tr>
+	<tr>
+		<th>動作条件</th>
+		<td><p>Flash Player10.1以上<br />
+		<small>※OS、ブラウザなどの動作条件は(<a href="http://www.adobe.com/jp/products/flashplayer/tech-specs.html">Adobe社のFlash Playerのページ</a>)をご確認ください。</small></p></td>
+	</tr>
+	</table>
+	<aside>
+	<h5 class="ttl">関連情報</h5>
+	<ul class="list">
+		<li><a href="printapi/bin/index.html" target="_blank" class="external">「Flash PrintAPI」デモ</a></li>
+		<!--li><a href="documentation.html#printAPI">「Flash PrintAPI」の仕様（ドキュメント）</a></li-->
+	</ul>
+	</aside>
+	</div>
+	</section>
+	
+	<section id="reflex_iText" class="block">
+	<h4 class="ttl">Reflex iText</h4>
+	<div class="content">
+	<p>Reflex iTextはREST志向のPDF生成ライブラリで、URLパラメータに帳票レイアウトやデータ(XML)を指定することかができます。Reflex iTextのインスタンスを複数起動させることで大規模なPDF生成処理が可能です。アプリケーションとReflex iTextインスタンスは基本的に疎結合でありアプリケーションサーバの資源を圧迫させる心配がありません。</p>
+	<figure class="img"><img src="resources/img/component/reflex_iText_img.png" alt="" /></figure>
+	<table class="table">
+	<tr>
+		<th>特長</th>
+		<td><ul class="list">
+			<li>XMLファイルとHTML形式のテンプレートを与えることによってPDFを生成可能。テンプレートに項目名を指定することによって動的なデータバインディングが可能。</li>
+			<li>ビジネスロジックを含まないため独立性が高く複数のサーバで分散処理させることが可能。</li>
+			<li>テンプレート開発をビジネスロジックと切り離すことで並行開発が可能。</li>
+		</ul></td>
+	</tr>
+	<tr>
+		<th>機能</th>
+		<td><ul class="list">
+			<li>HTMLライクな帳票テンプレートとCSSで記述可能</li>
+			<li>テンプレートHTMLとエンティティXMLを外部から与えることでPDF生成</li>
+			<li>ページ制御(ページ分割、カウンタ、判定、サイズ指定、向きなど）</li>
+			<li>フォント指定(HeiseiKakuGo-W5他３種、もしくは、外部フォント指定）</li>
+			<li>マクロ機能（include、if、for)</li>
+			<li>表(Table)と枠指定</li>
+			<li>イメージ画像表示</li>
+			<li>図形の作成<ul class="list">
+				<li>線、点線、四角形、角を丸めた四角形、円</li></ul></li>
+			<li>バーコードの作成<ul class="list">
+				<li>barcodeEAN,barcodeNW7,barcode39,barcode128,qrcode</li></ul></li>
+			<li>グラフの作成<ul class="list">
+				<li>円グラフ、棒グラフ、折れ線グラフ、時系列グラフ、ローソク足グラフ、ガントチャート</li></ul></li>
+			<li>グラフやバーコード、QRコードなどのPNGファイル出力</li>
+			<li>２つのPDFを合成</li>
+			<li>PDF文書の暗号化</li>
+			<li>デジタル署名</li>
+		</ul></td>
+	</tr>
+	<tr>
+		<th>動作条件</th>
+		<td><p>JDK1.5以上</p></td>
+	</tr>
+	</table>
+	<aside>
+	<h5 class="ttl">関連情報</h5>
+	<ul class="list">
+		<li><a href="http://pdf.latest.reflex-itext.appspot.com/pdfservicegae?template=http://reflex.sourceforge.jp/pdfsample/template/barcode128sample.html&entity=http://reflex.sourceforge.jp/pdfsample/data/barcode128.xml">「Reflex iText」デモ</a>（※PDFファイルがダウンロードされます）[PDF：4.9KB]</li>
+		<li><a href="documentation.html#reflexitext_contents">「Reflex iText」の仕様（ドキュメント）</a></li>
+	</ul>
+	</aside>
+	</div>
+	</section>
+</div>
+<div class="pagetop"><a href="#siteHeader">PAGE TOP▲</a></div>
+</section>
+
+</section>
+<!--//.section_group-->
+
+</article>
+<!--//#contents_main-->
+</div>
+<!--//#siteContents-->
+
+<footer id="siteFooter">
+<div id="siteFooterInner">
+<aside id="sns_links">
+<ul class="inline-list">
+<li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-lang="ja">ツイート</a></li>
+<li class="facebook"><div class="fb-like" data-send="false" data-layout="button_count" data-width="118" data-show-faces="false"></div></li>
+<li class="hatebu"><a href="javascript:'http://b.hatena.ne.jp/entry/'+document.location.href;" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
+<li class="G-plus"><div class="g-plusone" data-size="medium"></div></li>
+</ul>
+</aside>
+<div class="pagetop"><a href="#siteHeader"><img src="resources/img/pagetop_btn.png" alt="page top▲" /></a></div>
+
+<nav id="fnav">
+<ul class="inline-list">
+<li><a href="/">ホーム</a></li>
+<li><a href="about.html">概要</a></li>
+<li><a href="features.html">特長</a></li>
+<li><a href="components.html">製品構成</a></li>
+<li><a href="documentation.html">仕様</a></li>
+<li><a href="pricing.html">価格</a></li>
+<li><a href="success-stories.html">導入事例</a></li>
+<li><a href="contact.html">お問合せ</a></li>
+</ul>
+</nav>
+
+<aside id="development_agent" class="footer_sections">
+<section class="block">
+<h1>ReflexWorks技術開発・運営</h1>
+<ul class="inline-list">
+<li><a href="contact.html#company"><img src="resources/img/vtec_bnr.png" alt="有限会社バーチャルテクノロジー" /></a></li>
+<li><a href="http://blog.virtual-tech.net/"><img src="resources/img/vtecblog_bnr.png" alt="ぶいてく。｜ReflexWorks、XML、クラウドコンピューティングなどのTips BLOG" /></a></li>
+</ul>
+</section>
+<section class="block">
+<h1>ReflexWorks販売代理店</h1>
+<ul class="inline-list">
+<li><a href="http://www.cresco.co.jp/"><img src="resources/img/cresco_bnr.png" alt="株式会社クレスコ" rel="external" /></a></li>
+</ul>
+</section>
+</aside><!--//#credit-->
+
+<p id="copyright"><small><span>&#169;</span>2017 Virtual Technology,Ltd.</small></p>
+
+</div>
+</footer>
+<!--//#siteFooter-->
+</div>
+</body>
+</html>

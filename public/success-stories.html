@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>導入事例 | ReflexWorks（リフレックスワークス）</title>
+<meta name="format-detection" content="telephone=no" />
+<meta name="keywords" content="ReflexWorks,リフレックスワークス,プライベートクラウド,KVS,トランザクション,Web帳票" />
+<meta name="description" content="ReflexWorksを使った主な事例" />
+<meta name="author" content="Virtual Technology,Ltd." />
+<meta property="og:title" content="導入事例 | ReflexWorks（リフレックスワークス）" />
+<meta property="og:type" content=website />
+<meta property="og:url" content="http://reflexworks.jp/success-stories.html" />
+<meta property="og:image" content="http://reflexworks.jp/resources/img/siteicon.png" />
+<meta property="og:site_name" content="ReflexWorks（リフレックスワークス）" />
+<meta property="og:description" content="ReflexWorksを使った主な事例" />
+
+<link rel="author" title="VTECH - Virtual Technology's Portal Site" href="http://www.virtual-tech.net/" />
+<link rel="shortcut icon" type="image/vnd.microsoft.icon" sizes="16x16" href="/resources/img/favicon.ico" />
+<link rel="icon" type="image/gif" href="/resources/img/favicon.ico" />
+
+<link rel="index" href="/" title="トップページ" />
+
+<link rel="stylesheet" href="resources/css/html5reset.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="resources/js/common.js"></script>
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<script src="resources/js/jquery.ifixpng.js"></script>
+<script>
+$('img[@src$=.png]').ifixpng();
+</script>
+<![endif]-->
+<link rel="stylesheet" href="resources/css/common.css" />
+
+<!--google analytics-->
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-31830409-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = 'http://www.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</head>
+<body id="case">
+<div id="pagewrap">
+<header id="siteHeader">
+<div id="siteHeaderInner">
+<hgroup>
+<h1><a href="/"><img src="resources/img/logo.png" alt="ReflexWorks（リフレックスワークス）" /></a></h1>
+<h2><a href="contact.html#company"><img src="resources/img/vtec_logo.png" alt="Virtual Technology" /></a></h2>
+<h3>容易なスケールアウト拡張とトランザクション処理を実現する分散KVS基盤</h3>
+</hgroup>
+<nav id="gnav">
+<ul class="inline-list">
+<li><a href="about.html">概要</a></li>
+<li><a href="features.html">特長</a></li>
+<li><a href="components.html">製品構成</a></li>
+<li><a href="documentation.html">仕様</a></li>
+<li><a href="pricing.html">価格</a></li>
+<li><a href="success-stories.html" class="visiting">導入事例</a></li>
+<li id="gnav_contact"><a href="contact.html">お問合せ</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<!--//#siteHeader-->
+
+<div id="siteContents">
+<article id="contents_main">
+<header>
+<h1 id="page_ttl">導入事例</h1>
+</header>
+
+<div id="contents_intro">
+<section class="section_group">
+<h2 class="ttl">ReflexWorksを使った主な事例</h2>
+<nav class="tile_nav">
+<ul class="inline-list">
+<li><a href="#case1"><img src="resources/img/case/case1_tile.png" alt="事例１；送り状印刷ソフトのWeb化" /></a></li>
+<li><a href="#case2"><img src="resources/img/case/case2_tile.png" alt="事例２：注文書発行システム" /></a></li>
+<li><a href="#case3"><img src="resources/img/case/case3_tile.png" alt="事例３：PDF情報管理サービス" /></a></li>
+</ul>
+</nav>
+</section><!--//.section_group-->
+</div>
+<!--//#contents_intro-->
+
+<section class="section_group">
+
+<section id="case1" class="block">
+<h3 class="ttl">事例１：送り状印刷ソフトのWeb化<span>（大手宅配事業）</span></h3>
+<h4 class="ttl">業務における課題</h4>
+<div class="content">
+<ul class="list">
+<li>利用者はインターネットユーザであり、様々なOS、ブラウザに対応する必要がある。</li>
+<li>離れた担当者とのリアルタイムな情報共有がしたい。</li>
+<li>他社システムと連携することで再入力なく簡単に送り状を印刷したい。</li>
+<li>スタート時は最小のリソースで開始したいが実際にどれくらいのアクセスが来るかわからない。また、将来的にユーザが増えた場合においても単純なリソース追加により対応したい。</li>
+<li>数十万ユーザが同時に大量印刷する際に与えるシステムへの負荷が心配。</li>
+</ul>
+</div>
+<h4 class="ttl">導入したシステム</h4>
+<div class="content">
+<dl>
+<dt>複数のWebサーバ(静的コンテンツ)とReflexWorksノード(サービス)</dt>
+<dd>ReflexWorksは分散KVSであるためパフォーマンスに優れている。また、急激に利用者が増えても単純にノードを追加すれば対応可能であり、想定顧客数を最大に見積もらなくてもスモールスタートが可能。</dd>
+</dl>
+<dl>
+<dt>ReflexWorksノードと外部システムとのWebサービス連携</dt>
+<dd>ReflexWorksはXML(ATOM)やJSONに対応したREST APIを備えており、外部システムとのWebサービス連携が容易にできる。</dd>
+</dl>
+<dl>
+<dt>ブラウザにおける送り状印刷</dt>
+<dd>ReflexWorksはFlash PrintAPIにより送り状で必要なバーコード、QRコードなどをクライアント側で高速に印刷できるため、サーバ側への負荷は最小限で済む。
+また、Active Xなどの特定ブラウザに依存する技術を使用していないため様々なOSやブラウザで動作する。</dd>
+</dl>
+<figure class="img"><img src="resources/img/case/case1_img.png" alt="事例１：導入したシステムの図" /></figure>
+</div>
+<h4 class="ttl">業務改善効果</h4>
+<div class="content">
+<ul class="list">
+<li>お客様はWebブラウザだけで送り状印刷処理が可能になり、送り状を手書きする必要がなくなった。また、リアルタイム情報共有や出荷データを使った顧客の管理にも使えるようになった。</li>
+<li>ECモールの出店店舗は送り状発行ソフトに入力し直す作業が必要なくなり、簡単に作成することができるようになった。また、商品を購入した利用者は商品の配送状況をより確実に確認できるようになった。</li>
+</ul>
+</div>
+<div class="pagetop"><a href="#siteHeader">PAGE TOP▲</a></div>
+</section>
+
+<section id="case2" class="block">
+<h3 class="ttl">事例２：注文書発行システム<span>（大手自動車ディーラ）</span></h3>
+<h4 class="ttl">業務における課題</h4>
+<div class="content">
+<ul class="list">
+<li>クライアントアプリと同じような品質の帳票印刷を行えるWebアプリケーションを開発したい。ただしインストール作業はなくしたい。</li>
+<li>注文書（PDF）を基幹データーベースからダイナミックに作成したい。</li>
+<li>レイアウトが変更されることが多いため、プログラム変更ではなく帳票テンプレートを修正することで対応したい。（帳票レイアウトとデータの分離）</li>
+</ul>
+</div>
+<h4 class="ttl">導入したシステム</h4>
+<div class="content">
+<dl>
+<dt>複数拠点(約百カ所)のSystem iサーバとReflex iTextサービス</dt>
+<dd>クライアントPCからのリクエストにより各拠点サーバのDBからデータを検索し動的に注文書PDFを生成する。データのパターンに応じて数十種類の帳票レイアウト（HTML+CSS)が使用される。プログラムと帳票レイアウトは完全に分離しており、レイアウト変更の際はプログラム修正は必要ない。</dd>
+</dl>
+<dl>
+<dt>拠点のPCとブラウザ</dt>
+<dd>Acrobat Readerを起動できるブラウザで表示。OSやブラウザのバージョンには依存しない。</dd>
+</dl>
+<figure class="img"><img src="resources/img/case/case2_img.png" alt="事例２：導入したシステムの図" /></figure>
+</div>
+<h4 class="ttl">業務改善効果</h4>
+<div class="content">
+<ul class="list">
+<li>クライアントに専用ソフトを必要としていた帳票印刷をブラウザを用いて印刷できるようになった。</li>
+<li>レイアウト変更に伴う修正作業のコスト削減。</li>
+</ul>
+</div>
+<div class="pagetop"><a href="#siteHeader">PAGE TOP▲</a></div>
+</section>
+
+<section id="case3" class="block">
+<h3 class="ttl">事例３：PDF情報検索サービス <span>（情報管理サービス）</span></h3>
+<h4 class="ttl">業務における課題</h4>
+<div class="content">
+<ul class="list">
+<li>全体で数TBという膨大なPDF文書を検索するシステムを作りたい。</li>
+<li>サーバやストレージ維持費用などのコストを極力抑えたい。</li>
+<li>パブリッククラウドを利用したいが通信費は押さえたいため、パブリッククラウドとオンプレミスの統合になる。その場合、認証・認可の仕組みをどうするか。</li>
+<li>複数人が作業するため検索条件リストなどの情報はリアルタイムで共有したい。</li>
+</ul>
+</div>
+<h4 class="ttl">導入したシステム</h4>
+<div class="content">
+<dl>
+<dt>Google App Engine</dt>
+<dd>Google App EngineのデータストアにIndex情報を格納して検索サービスを構築する。</dd>
+</dl>
+<dl>
+<dt>Google Cloud Storage</dt>
+<dd>Google Cloud StorageにPDF文書を格納する。また、ACL機能や課金ログ（アクセスログ）も利用する。</dd>
+</dl>
+<dl>
+<dt>専用APサーバにReflexWorksノードを配置</dt>
+<dd>検索条件リストを受付てIndex情報を検索する。検索結果はキャッシュする。<br />
+複数ユーザによる検索条件リストの共有はTagging ServiceのACL機能とクライアントプッシュ機能(WebSocket)により実現。</dd>
+</dl>
+<figure class="img"><img src="resources/img/case/case3_img.png" alt="事例３：導入したシステムの図" /></figure>
+</div>
+<h4 class="ttl">業務改善効果</h4>
+<div class="content">
+<ul class="list">
+<li>ストレージ費用の安いパブリッククラウドの利用によりコスト削減。</li>
+<li>高くなりがちな通信費をオンプレミスのサーバキャッシュにより軽減。</li>
+<li>複数人のリアルタイムな作業を実現。</li>
+</ul>
+</div>
+<div class="pagetop"><a href="#siteHeader">PAGE TOP▲</a></div>
+</section>
+
+</section>
+<!--//.section_group-->
+
+</article>
+<!--//#contents_main-->
+</div>
+<!--//#siteContents-->
+
+<footer id="siteFooter">
+<div id="siteFooterInner">
+<aside id="sns_links">
+<ul class="inline-list">
+<li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-lang="ja">ツイート</a></li>
+<li class="facebook"><div class="fb-like" data-send="false" data-layout="button_count" data-width="118" data-show-faces="false"></div></li>
+<li class="hatebu"><a href="javascript:'http://b.hatena.ne.jp/entry/'+document.location.href;" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
+<li class="G-plus"><div class="g-plusone" data-size="medium"></div></li>
+</ul>
+</aside>
+<div class="pagetop"><a href="#siteHeader"><img src="resources/img/pagetop_btn.png" alt="page top▲" /></a></div>
+
+<nav id="fnav">
+<ul class="inline-list">
+<li><a href="/">ホーム</a></li>
+<li><a href="about.html">概要</a></li>
+<li><a href="features.html">特長</a></li>
+<li><a href="components.html">製品構成</a></li>
+<li><a href="documentation.html">仕様</a></li>
+<li><a href="pricing.html">価格</a></li>
+<li><a href="success-stories.html">導入事例</a></li>
+<li><a href="contact.html">お問合せ</a></li>
+</ul>
+</nav>
+
+<aside id="development_agent" class="footer_sections">
+<section class="block">
+<h1>ReflexWorks技術開発・運営</h1>
+<ul class="inline-list">
+<li><a href="contact.html#company"><img src="resources/img/vtec_bnr.png" alt="有限会社バーチャルテクノロジー" /></a></li>
+<li><a href="http://blog.virtual-tech.net/"><img src="resources/img/vtecblog_bnr.png" alt="ぶいてく。｜ReflexWorks、XML、クラウドコンピューティングなどのTips BLOG" /></a></li>
+</ul>
+</section>
+<section class="block">
+<h1>ReflexWorks販売代理店</h1>
+<ul class="inline-list">
+<li><a href="http://www.cresco.co.jp/"><img src="resources/img/cresco_bnr.png" alt="株式会社クレスコ" rel="external" /></a></li>
+</ul>
+</section>
+</aside><!--//#credit-->
+
+<p id="copyright"><small><span>&#169;</span>2017 Virtual Technology,Ltd.</small></p>
+
+</div>
+</footer>
+<!--//#siteFooter-->
+</div>
+</body>
+</html>
